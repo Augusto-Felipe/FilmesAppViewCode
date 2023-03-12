@@ -7,7 +7,17 @@
 
 import UIKit
 
+protocol RegisterScreenProtocol:AnyObject {
+    func registerButtonAction()
+}
+
 class RegisterScreen: UIView {
+    
+    var delegate: RegisterScreenProtocol?
+    
+    func delegate(delegate: RegisterScreenProtocol) {
+        self.delegate = delegate
+    }
     
     lazy var nameTextField: UITextField = {
         var tf = UITextField()
@@ -65,6 +75,8 @@ class RegisterScreen: UIView {
         button.addTarget(self, action: #selector(registerButtonPressed), for: .touchUpInside)
         return button
     }()
+    
+    
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -96,7 +108,7 @@ class RegisterScreen: UIView {
     }
     
     @objc public func registerButtonPressed() {
-        print("Funcionou")
+        self.delegate?.registerButtonAction()
     }
     
     public func validateTextFields() {

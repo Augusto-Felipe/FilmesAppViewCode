@@ -19,6 +19,7 @@ class RegisterVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         registerScreen?.configTextFieldsDelegates(delegate: self)
+        registerScreen?.delegate(delegate: self)
     }
     
 }
@@ -53,7 +54,6 @@ extension RegisterVC: UITextFieldDelegate {
             }
         }
         
-        
         registerScreen?.validateTextFields()
     }
     
@@ -61,5 +61,12 @@ extension RegisterVC: UITextFieldDelegate {
         textField.resignFirstResponder()
     }
     
+}
+
+
+extension RegisterVC: RegisterScreenProtocol {
     
+    func registerButtonAction() {
+        print("Funcionou")
+    }
 }
