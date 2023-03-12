@@ -38,6 +38,7 @@ extension RegisterVC: UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         
+        
         if textField.isEqual(registerScreen?.nameTextField) {
             if textField.text?.count == 0 {
                 registerScreen?.nameTextField.placeholder = "Digite seu nome"
@@ -51,6 +52,9 @@ extension RegisterVC: UITextFieldDelegate {
                 registerScreen?.passwordTextField.placeholder = "Digite sua senha"
             }
         }
+        
+        
+        registerScreen?.validateTextFields()
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

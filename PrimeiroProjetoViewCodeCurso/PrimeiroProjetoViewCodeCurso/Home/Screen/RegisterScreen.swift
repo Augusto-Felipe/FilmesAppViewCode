@@ -62,11 +62,13 @@ class RegisterScreen: UIView {
         button.backgroundColor = .lightGray
         button.clipsToBounds = true
         button.layer.cornerRadius = 20
+        button.addTarget(self, action: #selector(registerButtonPressed), for: .touchUpInside)
         return button
     }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+        validateTextFields()
         configBackground()
         configSuperView()
         setupContraints()
@@ -91,6 +93,23 @@ class RegisterScreen: UIView {
         self.nameTextField.delegate = delegate
         self.emailTextField.delegate = delegate
         self.passwordTextField.delegate = delegate
+    }
+    
+    @objc public func registerButtonPressed() {
+        print("Funcionou")
+    }
+    
+    public func validateTextFields() {
+        
+        let name: String = nameTextField.text ?? ""
+        let email: String = emailTextField.text ?? ""
+        let password: String = passwordTextField.text ?? ""
+        
+        if !name.isEmpty && !email.isEmpty && !password.isEmpty {
+            self.registerButton.isEnabled = true
+        } else {
+            self.registerButton.isEnabled = false
+        }
     }
     
     func setupContraints() {
