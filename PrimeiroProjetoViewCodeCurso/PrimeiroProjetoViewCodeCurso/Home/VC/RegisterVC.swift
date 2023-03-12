@@ -26,11 +26,31 @@ class RegisterVC: UIViewController {
 extension RegisterVC: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        print(#function)
+        
+        if textField.isEqual(registerScreen?.emailTextField) {
+            registerScreen?.emailTextField.placeholder = ""
+        } else if textField.isEqual(registerScreen?.passwordTextField) {
+            registerScreen?.passwordTextField.placeholder = ""
+        } else if textField.isEqual(registerScreen?.nameTextField) {
+            registerScreen?.nameTextField.placeholder = ""
+        }
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        print(#function)
+        
+        if textField.isEqual(registerScreen?.nameTextField) {
+            if textField.text?.count == 0 {
+                registerScreen?.nameTextField.placeholder = "Digite seu nome"
+            }
+        } else if textField.isEqual(registerScreen?.emailTextField) {
+            if textField.text?.count == 0 {
+                registerScreen?.emailTextField.placeholder = "Digite seu email"
+            }
+        } else if textField.isEqual(registerScreen?.passwordTextField) {
+            if textField.text?.count == 0 {
+                registerScreen?.passwordTextField.placeholder = "Digite sua senha"
+            }
+        }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
