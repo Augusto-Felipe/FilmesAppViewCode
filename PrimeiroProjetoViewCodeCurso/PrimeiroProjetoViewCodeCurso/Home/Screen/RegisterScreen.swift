@@ -87,6 +87,12 @@ class RegisterScreen: UIView {
         self.addSubview(registerButton)
     }
     
+    func configTextFieldsDelegates(delegate: UITextFieldDelegate) {
+        self.nameTextField.delegate = delegate
+        self.emailTextField.delegate = delegate
+        self.passwordTextField.delegate = delegate
+    }
+    
     func setupContraints() {
         NSLayoutConstraint.activate([
             
