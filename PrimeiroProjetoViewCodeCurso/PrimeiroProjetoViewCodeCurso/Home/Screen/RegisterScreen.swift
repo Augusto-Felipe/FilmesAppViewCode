@@ -122,6 +122,7 @@ class RegisterScreen: UIView {
         
         if !name.isEmpty && !email.isEmpty && !password.isEmpty {
             self.registerButton.isEnabled = true
+            self.registerButton.setTitleColor(.systemBlue, for: .normal)
         } else {
             self.registerButton.isEnabled = false
         }
