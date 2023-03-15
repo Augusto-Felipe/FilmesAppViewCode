@@ -14,6 +14,8 @@ class RegisterVC: UIViewController {
     
     var auth: Auth?
     
+    var alert: Alert?
+    
     override func loadView() {
         self.registerScreen = RegisterScreen()
         self.view = self.registerScreen
@@ -24,6 +26,7 @@ class RegisterVC: UIViewController {
         registerScreen?.configTextFieldsDelegates(delegate: self)
         registerScreen?.delegate(delegate: self)
         self.auth = Auth.auth()
+        self.alert = Alert(controller: self)
     }
     
 }
@@ -80,9 +83,9 @@ extension RegisterVC: RegisterScreenProtocol {
         self.auth?.createUser(withEmail: register.getEmail(), password: register.getPassword(), completion: { sucess, error in
             
             if error != nil {
-                print(error!)
+                self.alert?.createAlert(titulo: "Erro!", mensagem: "Verifique as informações preenchidas.")
             } else {
-                print("Cadastrado com sucesso.")
+                self.alert?.createAlert(titulo: "Parabéns!", mensagem: "Usuário cadastrado com sucesso.")
             }
         })
     }
