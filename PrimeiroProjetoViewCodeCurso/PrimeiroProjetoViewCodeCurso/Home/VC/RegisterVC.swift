@@ -32,29 +32,32 @@ extension RegisterVC: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         
-        if textField.isEqual(registerScreen?.emailTextField) {
-            registerScreen?.emailTextField.placeholder = ""
-        } else if textField.isEqual(registerScreen?.passwordTextField) {
-            registerScreen?.passwordTextField.placeholder = ""
-        } else if textField.isEqual(registerScreen?.nameTextField) {
-            registerScreen?.nameTextField.placeholder = ""
+        guard let register = self.registerScreen else { return }
+        
+        if textField.isEqual(register.emailTextField) {
+            register.emailTextField.placeholder = ""
+        } else if textField.isEqual(register.passwordTextField) {
+            register.passwordTextField.placeholder = ""
+        } else if textField.isEqual(register.nameTextField) {
+            register.nameTextField.placeholder = ""
         }
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         
+        guard let register = self.registerScreen else { return }
         
-        if textField.isEqual(registerScreen?.nameTextField) {
+        if textField.isEqual(register.nameTextField) {
             if textField.text?.count == 0 {
-                registerScreen?.nameTextField.placeholder = "Digite seu nome"
+                register.nameTextField.placeholder = "Digite seu nome"
             }
-        } else if textField.isEqual(registerScreen?.emailTextField) {
+        } else if textField.isEqual(register.emailTextField) {
             if textField.text?.count == 0 {
-                registerScreen?.emailTextField.placeholder = "Digite seu email"
+                register.emailTextField.placeholder = "Digite seu email"
             }
-        } else if textField.isEqual(registerScreen?.passwordTextField) {
+        } else if textField.isEqual(register.passwordTextField) {
             if textField.text?.count == 0 {
-                registerScreen?.passwordTextField.placeholder = "Digite sua senha"
+                register.passwordTextField.placeholder = "Digite sua senha"
             }
         }
         
