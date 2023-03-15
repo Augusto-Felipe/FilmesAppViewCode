@@ -31,36 +31,40 @@ class LoginVC: UIViewController {
 extension LoginVC: UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        print(#function)
         
         // Field validation
-        let email: String = loginScreen?.emailTextField.text ?? ""
-        let password: String = loginScreen?.passwordTextField.text ?? ""
+        guard let login = self.loginScreen else { return }
+        
+        let email: String = login.getEmail()
+        let password: String = login.getPassword()
         
         if !email.isEmpty && !password.isEmpty {
-            loginScreen?.loginButton.isEnabled = true
+            login.loginButton.isEnabled = true
         } else {
-            loginScreen?.loginButton.isEnabled = false
+            login.loginButton.isEnabled = false
         }
         
         // Restore placeholder
-        if textField.isEqual(loginScreen?.emailTextField) {
+        if textField.isEqual(login.emailTextField) {
             if textField.text?.count == 0 {
-                loginScreen?.emailTextField.placeholder = "Digite seu email"
+                login.emailTextField.placeholder = "Digite seu email"
             }
-        } else if textField.isEqual(loginScreen?.passwordTextField) {
+        } else if textField.isEqual(login.passwordTextField) {
             if textField.text?.count == 0 {
-                loginScreen?.passwordTextField.placeholder = "Digite sua senha"
+                login.passwordTextField.placeholder = "Digite sua senha"
             }
         }
     }
     
-    
+    // Delete placeholder
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        if textField.isEqual(loginScreen?.emailTextField) {
-            loginScreen?.emailTextField.placeholder = ""
-        } else if textField.isEqual(loginScreen?.passwordTextField) {
-            loginScreen?.passwordTextField.placeholder = ""
+        
+        guard let login = self.loginScreen else { return }
+        
+        if textField.isEqual(login.emailTextField) {
+            login.emailTextField.placeholder = ""
+        } else if textField.isEqual(login.passwordTextField) {
+            login.passwordTextField.placeholder = ""
         }
     }
     
