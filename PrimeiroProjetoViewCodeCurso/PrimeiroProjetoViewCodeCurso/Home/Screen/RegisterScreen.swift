@@ -128,6 +128,13 @@ class RegisterScreen: UIView {
         }
     }
     
+    public func getEmail() -> String {
+        return self.emailTextField.text ?? ""
+    }
+    
+    public func getPassword() -> String {
+        return self.passwordTextField.text ?? ""
+    }
     
     func configNameTextFieldConstraints() {
         self.nameTextField.snp.makeConstraints { make in

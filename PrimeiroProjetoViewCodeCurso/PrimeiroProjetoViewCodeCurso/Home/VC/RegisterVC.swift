@@ -66,16 +66,15 @@ extension RegisterVC: UITextFieldDelegate {
     }
     
 }
-
+    
 
 extension RegisterVC: RegisterScreenProtocol {
     
     func registerButtonAction() {
         
-        let email: String = registerScreen?.emailTextField.text ?? ""
-        let password: String = registerScreen?.passwordTextField.text ?? ""
+        guard let register = self.registerScreen else { return }
         
-        self.auth?.createUser(withEmail: email, password: password, completion: { sucess, error in
+        self.auth?.createUser(withEmail: register.getEmail(), password: register.getPassword(), completion: { sucess, error in
             
             if error != nil {
                 print(error!)
