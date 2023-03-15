@@ -54,7 +54,7 @@
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>10</integer>
+			<integer>0</integer>
 		</dict>
 		<key>PromisesObjC.xcscheme</key>
 		<dict>
@@ -66,7 +66,7 @@
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>12</integer>
+			<integer>1</integer>
 		</dict>
 		<key>nanopb.xcscheme</key>
 		<dict>
